@@ -1,0 +1,119 @@
+*,
+::after,
+::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+img {
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
+@font-face {
+  font-family: "Manrope-Bold";
+  src: url("../assets/fonts/Manrope-Bold.ttf");
+}
+@keyframes rotate {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  padding: 0 1.6rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: "Manrope-Bold";
+  background-color: #202733;
+}
+body .card {
+  width: 100%;
+  position: relative;
+  border-radius: 1rem;
+  padding: 4rem 2.4rem 6.4rem;
+  background-color: #313A48;
+}
+body .card h1 {
+  font-size: 1.1rem;
+  margin-bottom: 2.4rem;
+  letter-spacing: 0.3457rem;
+  color: #53FFAA;
+}
+body .card p {
+  font-size: 2.4rem;
+  letter-spacing: -0.0257rem;
+  color: #CEE3E9;
+}
+body .card .pattern {
+  width: 100%;
+  margin-top: 2.4rem;
+}
+body .card .dice {
+  left: 50%;
+  border: none;
+  outline: none;
+  width: 6.4rem;
+  display: flex;
+  height: 6.4rem;
+  cursor: pointer;
+  bottom: -3.2rem;
+  position: absolute;
+  border-radius: 100%;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  background-color: #53FFAA;
+}
+body .card .dice--rotate {
+  animation: rotate 2s linear infinite;
+}
+body .card .dice::after {
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  content: "";
+  height: 100%;
+  position: absolute;
+  border-radius: 100%;
+  transition: opacity 0.3s ease-in-out;
+  box-shadow: 0 0 4rem #53FFAA;
+}
+body .card .dice:hover::after {
+  opacity: 1;
+}
+
+@media (min-width: 48em) {
+  body .card {
+    width: 54rem;
+    padding: 4.8rem 4.8rem 7.2rem;
+  }
+  body .card h1 {
+    font-size: 1.3rem;
+    letter-spacing: 0.4086rem;
+  }
+  body .card p {
+    font-size: 2.8rem;
+    letter-spacing: -0.03rem;
+  }
+  body .card .pattern {
+    margin-top: 4rem;
+    content: url("/assets/images/pattern-divider-desktop.svg");
+  }
+}/*# sourceMappingURL=index.css.map */

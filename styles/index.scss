@@ -1,0 +1,113 @@
+@use './reset';
+@use './fonts';
+@use './variables';
+@use './breakpoint';
+
+@keyframes rotate {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    padding: 0 1.6rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: "Manrope-Bold";
+    background-color: variables.$dark-blue;
+
+    .card {
+        width: 100%;
+        position: relative;
+        border-radius: 1rem;
+        padding: 4rem 2.4rem 6.4rem;
+        background-color: variables.$dark-grayish-blue;
+
+        h1 {
+            font-size: 1.1rem;
+            margin-bottom: 2.4rem;
+            letter-spacing: 0.3457rem;
+            color: variables.$neon-green;
+        }
+
+        p {
+            font-size: 2.4rem;
+            letter-spacing: -0.0257rem;
+            color: variables.$light-cyan;
+        }
+
+        .pattern {
+            width: 100%;
+            margin-top: 2.4rem;
+        }
+
+        .dice {
+            left: 50%;
+            border: none;
+            outline: none;
+            width: 6.4rem;
+            display: flex;
+            height: 6.4rem;
+            cursor: pointer;
+            bottom: -3.2rem;
+            position: absolute;
+            border-radius: 100%;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-50%);
+            background-color: variables.$neon-green;
+
+            &--rotate {
+                animation: rotate 2s linear infinite;
+            }
+
+            &::after {
+                top: 0;
+                left: 0;
+                opacity: 0;
+                width: 100%;
+                content: '';
+                height: 100%;
+                position: absolute;
+                border-radius: 100%;
+                transition: opacity 0.3s ease-in-out;
+                box-shadow: 0 0 4rem variables.$neon-green;
+            }
+
+            &:hover::after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@include breakpoint.mq(tablet) {
+    body {
+        .card {
+            width: 54rem;
+            padding: 4.8rem 4.8rem 7.2rem;
+
+            h1 {
+                font-size: 1.3rem;
+                letter-spacing: 0.4086rem;
+            }
+
+            p {
+                font-size: 2.8rem;
+                letter-spacing: -0.03rem;
+            }
+
+            .pattern {
+                margin-top: 4rem;
+                content: url("/assets/images/pattern-divider-desktop.svg");
+            }
+        }
+    }
+}
