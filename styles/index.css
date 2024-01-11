@@ -114,6 +114,6 @@ body .card .dice:hover::after {
   }
   body .card .pattern {
     margin-top: 4rem;
-    content: url("/assets/images/pattern-divider-desktop.svg");
+    content: url("/Advice-generator-app/assets/images/pattern-divider-desktop.svg");
   }
 }/*# sourceMappingURL=index.css.map */
