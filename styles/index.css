@@ -81,7 +81,7 @@ body .card .dice {
   background-color: #53FFAA;
 }
 body .card .dice--rotate {
-  animation: rotate 2s linear infinite;
+  animation: rotate 1s linear infinite;
 }
 body .card .dice::after {
   top: 0;

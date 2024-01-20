@@ -65,7 +65,7 @@ body {
             background-color: variables.$neon-green;
 
             &--rotate {
-                animation: rotate 2s linear infinite;
+                animation: rotate 1s linear infinite;
             }
 
             &::after {

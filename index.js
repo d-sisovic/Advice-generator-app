@@ -1,28 +1,36 @@
 (() => {
+    let timeout;
+
     document.addEventListener('DOMContentLoaded', () => {
         const diceButton = document.querySelector('#dice');
         const textElement = document.querySelector('#text');
         const adviceText = document.querySelector('#advice');
 
         diceButton.addEventListener('click', () => {
-            diceButton.classList.add('dice--rotate');
+            clearTimeout(timeout);
+            addRotateAnimation();
 
-            setTimeout(async () => {
+            timeout = setTimeout(async () => {
                 try {
                     const response = await fetch('https://api.adviceslip.com/advice');
                     const { slip } = await response.json();
                     const { id, advice } = slip;
     
-                    adviceText.textContent = `ADVICE #${id}`;
-                    textElement.textContent = advice;
+                    setTextContent(`ADVICE #${id}`, advice);
                     removeRotateAnimation();
                 } catch {
-                    textElement.textContent = 'ERROR #xxx';
-                    adviceText.textContent = 'There was an error while fetching the advice. Please try again.';
+                    setTextContent('ERROR #xxx', 'There was an error while fetching the advice. Please try again.');
                     removeRotateAnimation();
                 }
-            }, 2000);
+            }, 1_000);
         });
+
+        const setTextContent = (adviceId, advice) => {
+            adviceText.textContent = adviceId;
+            textElement.textContent = advice;
+        };
+
+        const addRotateAnimation = () => diceButton.classList.add('dice--rotate');
 
         const removeRotateAnimation = () => diceButton.classList.remove('dice--rotate');
     });
